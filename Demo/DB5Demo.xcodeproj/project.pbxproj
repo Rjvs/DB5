@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		840375F5177BD9A600188A0B /* VSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 840375F2177BD9A600188A0B /* VSTheme.m */; };
-		840375F8177BDA9E00188A0B /* DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840375F7177BDA9E00188A0B /* DB5.plist */; };
 		844CCE11177B6B5900B8BDF0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844CCE10177B6B5900B8BDF0 /* UIKit.framework */; };
 		844CCE13177B6B5900B8BDF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844CCE12177B6B5900B8BDF0 /* Foundation.framework */; };
 		844CCE15177B6B5900B8BDF0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844CCE14177B6B5900B8BDF0 /* CoreGraphics.framework */; };
@@ -20,6 +19,7 @@
 		844CCE27177B6B5900B8BDF0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844CCE26177B6B5900B8BDF0 /* Default-568h@2x.png */; };
 		844CCE2A177B6B5900B8BDF0 /* DB5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CCE29177B6B5900B8BDF0 /* DB5ViewController.m */; };
 		844CCE2D177B6B5900B8BDF0 /* DB5ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844CCE2B177B6B5900B8BDF0 /* DB5ViewController.xib */; };
+		BCE43FD4195F040F002751A4 /* DB5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840375F7177BDA9E00188A0B /* DB5.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,12 +168,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE43FD4195F040F002751A4 /* DB5.plist in Resources */,
 				844CCE1B177B6B5900B8BDF0 /* InfoPlist.strings in Resources */,
 				844CCE23177B6B5900B8BDF0 /* Default.png in Resources */,
 				844CCE25177B6B5900B8BDF0 /* Default@2x.png in Resources */,
 				844CCE27177B6B5900B8BDF0 /* Default-568h@2x.png in Resources */,
 				844CCE2D177B6B5900B8BDF0 /* DB5ViewController.xib in Resources */,
-				840375F8177BDA9E00188A0B /* DB5.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +191,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ". $SRCROOT/../Source/VSSymlinkThemesScript.sh $SRCROOT/DB5Demo/DB5.plist";
+			shellScript = ". \"$SRCROOT/../Source/VSSymlinkThemesScript.sh\" \"$SRCROOT/DB5Demo/DB5.plist\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
