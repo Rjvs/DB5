@@ -216,8 +216,10 @@ static ThemesDidReloadHandler _themesReloadedHandler;
 	NSString *colorString = [self stringForKey:key];
 
     UIColor *color;
-    // Support for RGB and RGBA in 255 (spaces ignored)
+    // Support for RGB and RGBA in 255 (spaces and parentheses ignored)
     if ([colorString rangeOfString:@","].location != NSNotFound) {
+        colorString = [colorString stringByReplacingOccurrencesOfString:@"(" withString:@""];
+        colorString = [colorString stringByReplacingOccurrencesOfString:@")" withString:@""];
         colorString = [colorString stringByReplacingOccurrencesOfString:@" " withString:@""];
         NSArray *colorComponents = [colorString componentsSeparatedByString:@","];
         if ([colorComponents count] == 3 || [colorComponents count] == 4) {
@@ -245,13 +247,18 @@ static ThemesDidReloadHandler _themesReloadedHandler;
 
 
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key {
-
-	CGFloat left = [self floatForKey:[key stringByAppendingString:@"Left"]];
-	CGFloat top = [self floatForKey:[key stringByAppendingString:@"Top"]];
-	CGFloat right = [self floatForKey:[key stringByAppendingString:@"Right"]];
-	CGFloat bottom = [self floatForKey:[key stringByAppendingString:@"Bottom"]];
-
-	UIEdgeInsets edgeInsets = UIEdgeInsetsMake(top, left, bottom, right);
+    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+    
+    NSString *insetsString = [self stringForKey:key];
+    if (insetsString) {
+        edgeInsets = UIEdgeInsetsFromString(insetsString);
+    }
+    else {
+        edgeInsets.left = [self floatForKey:[key stringByAppendingString:@"Left"]];
+        edgeInsets.top = [self floatForKey:[key stringByAppendingString:@"Top"]];
+        edgeInsets.right = [self floatForKey:[key stringByAppendingString:@"Right"]];
+        edgeInsets.bottom = [self floatForKey:[key stringByAppendingString:@"Bottom"]];
+    }
 	return edgeInsets;
 }
 
@@ -284,10 +291,12 @@ static ThemesDidReloadHandler _themesReloadedHandler;
 }
 
 
-- (NSShadow *)shadowForKey:(NSString *)key {
+- (NSShadow *)shadowForKey:(NSString *)key
+{
     
     NSShadow *cachedShadow = [self.shadowCache objectForKey:key];
-    if (cachedShadow != nil) {
+    if (cachedShadow != nil)
+    {
         return cachedShadow;
     }
     
