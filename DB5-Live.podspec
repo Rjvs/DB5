@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "DB5-Live"
-  s.version          = "0.1.5-oe"
+  s.version          = "0.1.6-oe"
   s.summary          = "DB5 with Live Reloading"
   s.license          = 'MIT'
   s.author           = { "Dimitri Stancioff" => "dstancioff@gmail.com" }
