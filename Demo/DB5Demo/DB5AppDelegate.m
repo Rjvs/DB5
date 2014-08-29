@@ -8,27 +8,29 @@
 
 #import "DB5AppDelegate.h"
 #import "DB5ViewController.h"
-#import "VSThemeLoader.h"
 #import "VSTheme.h"
-
-
-@interface DB5AppDelegate ()
-
-@end
-
 
 @implementation DB5AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	
-    VSTheme *theme = [VSThemeLoader sharedInstance].defaultTheme;
+
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
- 	self.viewController = [[DB5ViewController alloc] initWithNibName:@"DB5ViewController" bundle:nil theme:theme];
-	self.window.rootViewController = self.viewController;
+    __weak DB5AppDelegate* wself = self;
+    [VSTheme setThemesDidReloadHandler:^
+     {
+         [wself reloadViewController];
+     }];
+    [self reloadViewController];
     [self.window makeKeyAndVisible];
-	
+
     return YES;
+}
+
+- (void)reloadViewController
+{
+    self.viewController = [[DB5ViewController alloc] initWithNibName:@"DB5ViewController" bundle:nil];
+    self.window.rootViewController = self.viewController;
 }
 
 @end
