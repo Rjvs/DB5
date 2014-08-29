@@ -16,10 +16,10 @@
 
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    __weak DB5AppDelegate* wself = self;
+    __weak DB5AppDelegate* welf = self;
     [VSTheme setThemesDidReloadHandler:^
      {
-         [wself reloadViewController];
+         [welf reloadViewController];
      }];
     [self reloadViewController];
     [self.window makeKeyAndVisible];
